@@ -10,7 +10,7 @@ module.exports = function collectMessages(fileTraverser, onCollected, babelConfi
   const absolutePath = path.isAbsolute(babelConfigPath)
     ? babelConfigPath
     : path.join(process.cwd(), babelConfigPath);
-  const babelConfig = JSON.parse(fs.readFileSync(absolutePath, 'utf8'));
+  const babelConfig = require(`${absolutePath}`)
   if (babelConfig.plugins) {
     babelConfig.plugins.push('react-intl');
   } else {
